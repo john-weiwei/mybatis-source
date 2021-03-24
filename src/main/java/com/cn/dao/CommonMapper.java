@@ -55,7 +55,9 @@ public interface CommonMapper {
     int updateRecordsByPsptId(Map param);
     
     List<ConsultRecordCount> queryRecordCount(Map param);
-    
+
+    List<ConsultRecordCount> queryRecordCountByPsptIdParam(@Param("psptId") String psptId);
+
     int updateRecordCount(Map param);
     
     List<ConsultConfigArea> qryArea(Map param);

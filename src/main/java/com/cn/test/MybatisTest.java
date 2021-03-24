@@ -139,7 +139,8 @@ public class MybatisTest {
     @Test
     public void AnnoParam() {
         CommonMapper mapper = getSqlSession().getMapper(CommonMapper.class);
-        System.out.println(mapper.queryUserByPsptIdParam("456979432"));
+//        System.out.println(mapper.queryUserByPsptIdParam("456979432"));
+        System.out.println(mapper.queryRecordCountByPsptIdParam("456979432"));
     }
 
     @Test

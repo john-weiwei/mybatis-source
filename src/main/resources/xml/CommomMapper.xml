@@ -242,6 +242,16 @@
         </trim>
     </select>
 
+
+    <select id="queryRecordCountByPsptIdParam" resultMap="CountResultMap">
+        select * from consult_recordcount
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="psptId != null and psptId != ''">
+                and psptId = #{psptId,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </select>
+
     <select id="queryContent" parameterType="java.util.Map" resultMap="ContentResultMap">
         select * from consult_content a where a.state = 0
         <if test="type != null and type != ''">
