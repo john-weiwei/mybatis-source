@@ -41,7 +41,7 @@ public class MybatisTest {
 //        System.out.println(sqlSession.selectList("cn.enjoy.dao.CommonMapper.queryAreaByAreaCode", new HashMap<>()));
         //得到的是代理对象
         CommonMapper mapper = sqlSession.getMapper(CommonMapper.class);
-        System.out.println(mapper.queryAreaByAreaCode(new HashMap()));
+        System.out.println(mapper.queryAreaByAreaCodeValue("HN1"));
 //        sqlSession.commit();
     }
 
@@ -66,8 +66,9 @@ public class MybatisTest {
     @Test
     public void collection() {
         CommonMapper mapper = getSqlSession().getMapper(CommonMapper.class);
-        List<ConsultContractCardInfo> consultContractCardInfos = mapper.queryContractbyCardId();
-        System.out.println(consultContractCardInfos);
+//        List<ConsultContractCardInfo> consultContractCardInfos = mapper.queryContractbyCardId();
+        List<ConsultContractCardInfo> consultContractCardInfos = mapper.queryContract();
+        System.out.println(consultContractCardInfos.get(0));
     }
 
     public SqlSession getSqlSession() {

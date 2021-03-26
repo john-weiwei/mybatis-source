@@ -3,6 +3,7 @@ package com.cn.pojo;
 import org.apache.ibatis.type.Alias;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Alias("ConsultContract")
 public class ConsultContract implements Serializable {
@@ -18,7 +19,17 @@ public class ConsultContract implements Serializable {
     private String activeTime;
     
     private Integer state;
-    
+
+    private List<ConsultIdCardInfo> infos;
+
+    public List<ConsultIdCardInfo> getInfos() {
+        return infos;
+    }
+
+    public void setInfos(List<ConsultIdCardInfo> infos) {
+        this.infos = infos;
+    }
+
     public Integer getContractId() {
         return contractId;
     }

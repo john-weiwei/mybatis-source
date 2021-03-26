@@ -74,7 +74,13 @@
         <result column="ACTIVETIME" property="activeTime"/>
         <result column="STATE" property="state"/>
 <!--        <association property="info" javaType="ConsultIdCardInfo" resultMap="CardIdInfoResultMap"/>-->
-        <collection property="infos" javaType="java.util.List" resultMap="CardIdInfoResultMap"/>
+<!--        <collection property="infos" javaType="java.util.List" resultMap="CardIdInfoResultMap"/>-->
+<!--    嵌套查询：执行完一条select查询后，用它的关联字段再进行一次select查询；
+        在使用resultMap为 qctcid 的select语句，完成查询之后，会使用psptId作为 queryUserByPsptId 语句的查询条件
+        再次进行查询，在mybatis里面，这就是嵌套查询
+         -->
+        <collection property="infos" column="PSPTID" fetchType="lazy" select="queryUserByPsptId"/>
+
     </resultMap>
 
 <!--    <parameterMap id="CommonParameter" type="">-->
@@ -88,6 +94,10 @@
     <select id="queryContractbyCardId" resultMap="qctcid">
 		select * from consult_contract a join consult_idcardinfo b on a.psptId = b.psptId
 	</select>
+
+    <select id="queryContract" resultMap="qctcid">
+        select * from consult_contract
+    </select>
 
     <update id="updateConsultRecord" parameterType="java.util.Map" databaseId="mysql">
         update consult_record
@@ -219,6 +229,16 @@
 <!--  flushCache="true" 表示在执行sql之前清除缓存  -->
     <select id="queryAreaByAreaCode" flushCache="false" useCache="false" parameterType="java.util.Map" resultMap="AreaResultMap">
         select <include refid="queryAreaByAreaCodesql"></include> from consult_configarea
+    </select>
+
+    <select id="queryAreaByAreaCodeValue" flushCache="false" useCache="false" parameterType="java.util.Map" resultMap="AreaResultMap">
+        select <include refid="queryAreaByAreaCodesql"></include>
+        from consult_configarea
+        <where>
+            <if test="areaCode != null and areaCode != ''">
+                and areaCode = #{areaCode}
+            </if>
+        </where>
     </select>
 
     <select id="queryUserByPsptId" parameterType="java.util.Map" resultType="java.util.Map">

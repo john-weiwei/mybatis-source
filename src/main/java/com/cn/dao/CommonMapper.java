@@ -21,7 +21,9 @@ public interface CommonMapper {
     int updateArea(ConsultConfigArea area);
     
     List<ConsultConfigArea> queryAreaByAreaCode(Map param);
-    
+
+    List<ConsultConfigArea> queryAreaByAreaCodeValue(String areaCode);
+
     List<ConsultRecord> queryConsultRecords(Map param);
     
     List<Map> queryUserByPsptId(Map param);
@@ -41,6 +43,9 @@ public interface CommonMapper {
     List<ConsultRecord> queryRecordshaveH(Map param);
 
     List<ConsultContractCardInfo> queryContractbyCardId();
+
+    List<ConsultContractCardInfo> queryContract();
+
     List<ConsultIdCardInfo> queryCardIdInfo();
     
     //@Select("select * from consult_content where type = #{type}")
