@@ -66,7 +66,9 @@ public interface CommonMapper {
     int updateRecordCount(Map param);
     
     List<ConsultConfigArea> qryArea(Map param);
-    
+
+    List<ConsultConfigArea> queryLikeCode(String areaCode);
+
     List<ConsultContract> qryContracts(Map param);
     
     int saveContracts(List<ConsultContract> contracts);

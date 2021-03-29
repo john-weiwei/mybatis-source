@@ -3,6 +3,7 @@ package com.cn.test;
 import com.cn.dao.CommonMapper;
 import com.cn.dao.TUser1Mapper;
 import com.cn.datasource.DataSourceUtil;
+import com.cn.pojo.ConsultConfigArea;
 import com.cn.pojo.ConsultContract;
 import com.cn.pojo.ConsultContractCardInfo;
 import com.cn.pojo.ConsultIdCardInfo;
@@ -126,6 +127,13 @@ public class MybatisTest {
     public void resultType() {
         CommonMapper mapper = getSqlSession().getMapper(CommonMapper.class);
         List<ConsultIdCardInfo> consultIdCardInfos = mapper.queryCardIdInfo();
+        System.out.println(consultIdCardInfos);
+    }
+
+    @Test
+    public void resultByAreaCode() {
+        CommonMapper mapper = getSqlSession().getMapper(CommonMapper.class);
+        List<ConsultConfigArea> consultIdCardInfos = mapper.queryLikeCode("HN1");
         System.out.println(consultIdCardInfos);
     }
 

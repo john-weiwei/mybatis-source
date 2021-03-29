@@ -160,6 +160,16 @@
         where areaCode = #{areaCode,jdbcType=VARCHAR}
     </update>
 
+    <select id="queryLikeCode" resultType="com.cn.vo.ConsultConfigAreaVO">
+        SELECT areaCode,areaName
+        FROM consult_configarea
+        <where>
+            <if test="areaCode != null and areaCode != ''">
+                areaCode LIKE CONCAT('%',#{areaCode},'%')
+            </if>
+        </where>
+    </select>
+
     <update id="updateRecords" parameterType="java.util.Map">
 
         update consult_record set
