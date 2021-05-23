@@ -3,6 +3,7 @@ package com.cn.test;
 import com.cn.dao.CommonMapper;
 import com.cn.dao.TUser1Mapper;
 import com.cn.datasource.DataSourceUtil;
+import com.cn.pojo.ConsultConfigArea;
 import com.cn.pojo.ConsultContract;
 import com.cn.pojo.ConsultContractCardInfo;
 import com.cn.pojo.ConsultIdCardInfo;
@@ -41,7 +42,7 @@ public class MybatisTest {
 //        System.out.println(sqlSession.selectList("cn.enjoy.dao.CommonMapper.queryAreaByAreaCode", new HashMap<>()));
         //得到的是代理对象
         CommonMapper mapper = sqlSession.getMapper(CommonMapper.class);
-        System.out.println(mapper.queryAreaByAreaCode(new HashMap()));
+        System.out.println(mapper.queryAreaByAreaCodeValue("HN1"));
 //        sqlSession.commit();
     }
 
@@ -66,8 +67,9 @@ public class MybatisTest {
     @Test
     public void collection() {
         CommonMapper mapper = getSqlSession().getMapper(CommonMapper.class);
-        List<ConsultContractCardInfo> consultContractCardInfos = mapper.queryContractbyCardId();
-        System.out.println(consultContractCardInfos);
+//        List<ConsultContractCardInfo> consultContractCardInfos = mapper.queryContractbyCardId();
+        List<ConsultContractCardInfo> consultContractCardInfos = mapper.queryContract();
+        System.out.println(consultContractCardInfos.get(0));
     }
 
     public SqlSession getSqlSession() {
@@ -125,6 +127,13 @@ public class MybatisTest {
     public void resultType() {
         CommonMapper mapper = getSqlSession().getMapper(CommonMapper.class);
         List<ConsultIdCardInfo> consultIdCardInfos = mapper.queryCardIdInfo();
+        System.out.println(consultIdCardInfos);
+    }
+
+    @Test
+    public void resultByAreaCode() {
+        CommonMapper mapper = getSqlSession().getMapper(CommonMapper.class);
+        List<ConsultConfigArea> consultIdCardInfos = mapper.queryLikeCode("HN1");
         System.out.println(consultIdCardInfos);
     }
 
