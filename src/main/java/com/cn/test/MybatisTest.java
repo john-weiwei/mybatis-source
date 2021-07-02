@@ -295,4 +295,9 @@ public class MybatisTest {
         sqlSession.close();
     }
 
+    @Test
+    public void testArray() {
+        int[] result = new int[]{-1,-1};
+    }
+
 }
