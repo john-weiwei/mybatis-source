@@ -16,10 +16,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author:ZhangWeiWei
@@ -297,7 +294,8 @@ public class MybatisTest {
 
     @Test
     public void testArray() {
-        int[] result = new int[]{-1,-1};
+        int n = 1/2;
+        System.out.println(n);
     }
 
 }
