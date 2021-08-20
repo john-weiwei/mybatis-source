@@ -3,6 +3,7 @@ package com.cn.test;
 import com.cn.dao.CommonMapper;
 import com.cn.dao.TUser1Mapper;
 import com.cn.datasource.DataSourceUtil;
+import com.cn.enums.HouseStatusEnum;
 import com.cn.pojo.ConsultConfigArea;
 import com.cn.pojo.ConsultContract;
 import com.cn.pojo.ConsultContractCardInfo;
@@ -294,7 +295,7 @@ public class MybatisTest {
 
     @Test
     public void testArray() {
-        int n = 1/2;
+        String n = HouseStatusEnum.SALE.name();
         System.out.println(n);
     }
 
